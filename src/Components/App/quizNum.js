@@ -40,8 +40,8 @@ const ProgressComponent = ({ step }) => {
   return (
     <ThemeProvider theme={theme}>
       <ProgressBar>
-        <Circle active={step > -1} />
-        <Line active={step > 1} />
+        <Circle active={step > 0} />
+        <Line active={step > 0} />
         <Circle active={step > 1} />
         <Line active={step > 2} />
         <Circle active={step > 2} />

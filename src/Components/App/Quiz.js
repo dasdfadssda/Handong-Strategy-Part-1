@@ -16,6 +16,7 @@ const QuestionText = styled.div`
   font-size: 24px;
   width: 80%;
   word-break: break-word;
+  margin-bottom: 30px;
 `;
 
 const QuestionNum = styled.div`
@@ -25,11 +26,11 @@ const QuestionNum = styled.div`
 `;
 
 const Button = styled.button`
-  width: 250px;
+  width: 80%;
   padding: 10px;
   margin: 10px;
-  background-color: white;
-  border: 2px solid #ccc;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
@@ -40,6 +41,21 @@ const Button = styled.button`
 
   &.selected {
     border-color: green;
+  }
+`;
+
+const NextButton = styled.button`
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 20%;
+  height: 20%;
+  background-color: transparent;
+  margin-right: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -65,15 +81,20 @@ const ExplanationPage = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-const ExplanationText = styled.div`
-  margin-top: 20px;
-  width : 80%;
-  font-size : 20px;
-  word-break: break-word;
+const FlexDiv = styled.div`
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
-
+const ExplanationText = styled.div`
+  margin-top: 60px;
+  width: 80%;
+  font-size: 20px;
+  word-break: break-word;
+`;
 
 function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -116,9 +137,6 @@ function QuizApp() {
       setShowModal(true);
       const timer = setTimeout(() => {
         setShowModal(false);
-        setCurrentQuestionIndex(
-          (current) => (current + 1) % selectedQuestions.length
-        );
         setshowQuiz(true);
         setSelectedAnswer(null);
       }, 1200);
@@ -136,14 +154,16 @@ function QuizApp() {
   };
 
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((current) => (current + 1) % selectedQuestions.length);
+    setCurrentQuestionIndex(
+      (current) => (current + 1) % selectedQuestions.length
+    );
     setShowModal(false);
     setshowQuiz(false);
   };
 
   return (
     <Container>
-      <ProgressComponent step={currentQuestionIndex}/>
+      <ProgressComponent step={currentQuestionIndex} />
       {!showQuiz ? (
         <>
           <QuestionNum>Q{currentQuestionIndex + 1}.</QuestionNum>
@@ -169,9 +189,13 @@ function QuizApp() {
         <>
           <ExplanationPage>
             <QuestionNum>정답.</QuestionNum>
-          <ExplanationText>{question.explain}</ExplanationText>
-          <Button onClick={handleNextQuestion}>다음 문제로</Button>
-        </ExplanationPage>
+            <ExplanationText>{question.explain}</ExplanationText>
+          </ExplanationPage>
+          <FlexDiv>
+            <NextButton onClick={handleNextQuestion}>
+              <img src={require("../../Asset/Next_Icon.png")} />
+            </NextButton>
+          </FlexDiv>
         </>
       )}
     </Container>
