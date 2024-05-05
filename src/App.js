@@ -5,6 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext.js";
 import { theme } from "./Style/theme";
 import MenuPage from "./Page/MenuPage.js";
 import QuizPage from "./Page/QuizPage.js";
+import QuizCompletionScreen from "./Components/App/quizcomplete.js";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/order" element={<MenuPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz-finish" element={<QuizCompletionScreen />} />
         </Routes>
       </Router>
     </ThemeProvider>

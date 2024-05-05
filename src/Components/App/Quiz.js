@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import questions from "../../model/Question"; // 문제 목록 가져오기
 import ProgressComponent from "./quizNum";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -125,8 +126,10 @@ function QuizApp() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [showQuiz, setshowQuiz] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
   const [selectedQuestions, setSelectedQuestions] = useState([]);
+  const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSelectedQuestions(selectQuestions());
@@ -137,7 +140,7 @@ function QuizApp() {
       setShowModal(true);
       const timer = setTimeout(() => {
         setShowModal(false);
-        setshowQuiz(true);
+        setShowQuiz(true);
         setSelectedAnswer(null);
       }, 2000);
 
@@ -151,14 +154,26 @@ function QuizApp() {
 
   const handleAnswerClick = (answer) => {
     setSelectedAnswer(answer);
+    // Update correct answers count if the selected answer is correct
+    if (answer === question.answer) {
+      setCorrectAnswersCount((prev) => prev + 1);
+    }
   };
 
   const handleNextQuestion = () => {
+    if (currentQuestionIndex === selectedQuestions.length - 1) {
+      // This is the last question, log the results
+      console.log(
+        `You answered ${correctAnswersCount} out of ${selectedQuestions.length} questions correctly.`
+      );
+      navigate("/quiz-finish");
+    }
+
     setCurrentQuestionIndex(
       (current) => (current + 1) % selectedQuestions.length
     );
     setShowModal(false);
-    setshowQuiz(false);
+    setShowQuiz(false);
   };
 
   return (
