@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -58,6 +59,8 @@ const TextLogo = styled.img`
 `;
 
 function HomePage() {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <MainText>안녕하세요! 한동 공부 1조입니다.</MainText>
@@ -66,8 +69,8 @@ function HomePage() {
         가족을 환하게 드리고 있습니다! <br />
         많은 참여 부탁드립니다😊
       </Message>
-      <OrderButton>주문하기</OrderButton>
-      <Button>퀴즈풀기</Button>
+      <OrderButton onClick={() => navigate("/order")}>주문하기</OrderButton>
+      <Button onClick={() => navigate("/quiz")}>퀴즈풀기</Button>
       <TextLogo src={require("../../Asset/Text_logo.png")} />
     </Container>
   );
