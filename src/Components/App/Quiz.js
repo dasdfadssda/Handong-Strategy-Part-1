@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { theme } from "../../../Style/theme";
-import { Link } from "react-router-dom";
+import { theme } from "../../Style/theme";
 
 // theme 파일 폰트 적용 방법 + style-components 사용
 const Header1 = styled.div`
@@ -12,15 +11,12 @@ const Header1 = styled.div`
   font-family: "Pretendard";
 `;
 
-const AppAbout = () => {
+const QuizPage = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Header1>소개 모바일 페이지</Header1>
-      <Link to="/">
-        홈 페이지
-      </Link>
+      <Header1>QuizPage</Header1>
     </ThemeProvider>
   );
 };
 
-export default AppAbout;
+export default QuizPage;

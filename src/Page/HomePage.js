@@ -1,11 +1,11 @@
 import React from "react";
-import AppHome from "../Components/App/App_Home_Components/AppHome";
+import Home from "../Components/App/Home";
 
 const HomePage = () => {
   return (
     <>
       <div>
-        <AppHome />
+        <Home />
       </div>
     </>
   );
