@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import questions from "../../model/Question"; // 문제 목록 가져오기
 import ProgressComponent from "./quizNum";
 import { useNavigate } from "react-router-dom";
+import { ScoreContext } from "../../contexts/ScoreContext";
 
 const Container = styled.div`
   display: flex;
@@ -95,6 +96,7 @@ const ExplanationText = styled.div`
   width: 80%;
   font-size: 20px;
   word-break: break-word;
+  line-height: 150%; 
 `;
 
 function shuffleArray(array) {
@@ -130,6 +132,8 @@ function QuizApp() {
   const [selectedQuestions, setSelectedQuestions] = useState([]);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const navigate = useNavigate();
+  const { score, setScore } = useContext(ScoreContext);
+
 
   useEffect(() => {
     setSelectedQuestions(selectQuestions());
@@ -166,12 +170,14 @@ function QuizApp() {
       console.log(
         `You answered ${correctAnswersCount} out of ${selectedQuestions.length} questions correctly.`
       );
+      setScore(correctAnswersCount);
       navigate("/quiz-finish");
     }
 
     setCurrentQuestionIndex(
       (current) => (current + 1) % selectedQuestions.length
     );
+    console.log("점수는 : ",score);
     setShowModal(false);
     setShowQuiz(false);
   };
