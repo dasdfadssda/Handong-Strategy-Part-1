@@ -64,7 +64,7 @@ const NextButton = styled.button`
 
 const Modal = styled.div`
   position: fixed;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: ${(props) => (props.show ? "block" : "none")};
