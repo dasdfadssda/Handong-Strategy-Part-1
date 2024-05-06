@@ -30,7 +30,7 @@ const Button = styled.button`
   width: 60vw;
   padding: 2vw; // 반응형 패딩
   margin: 2.6667vw;
-  background-color: #4caf50;
+  background-color: #00A86B;
   color: white;
   border: none;
   font-size: 4vw; // 반응형 글자 크기
@@ -38,14 +38,14 @@ const Button = styled.button`
   border-radius: 41.5px;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #00A86B;
   }
 `;
 
 const OrderButton = styled(Button)`
   background-color: white; // 흰색 배경
-  color: #4caf50; // 초록색 글자
-  border: 2px solid #4caf50; // 초록색 태두리
+  color: #00A86B; // 초록색 글자
+  border: 2px solid #00A86B; // 초록색 태두리
 
   &:hover {
     background-color: #f0f0f0; // 호버 시 배경 색 변경

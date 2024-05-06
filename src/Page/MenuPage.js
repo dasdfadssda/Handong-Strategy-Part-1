@@ -71,7 +71,7 @@ const Price = styled.div`
 const OrderButton = styled.button`
   width: 90%;
   padding: 15px;
-  background-color: #4caf50;
+  background-color: #00A86B;
   color: white;
   border: none;
   border-radius: 25px;
