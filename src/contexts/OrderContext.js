@@ -1,21 +1,21 @@
-import React from "react";
+import React, { createContext, useContext, useState } from 'react';
 
-export const OrderContext = React.createContext();
+const OrderContext = createContext();
 
-export function OrderProvider({ children }) {
-  const [order, setOrder] = React.useState(
-    () => window.sessionStorage.getItem("order") || ""
-  );
-  
-  React.useEffect(() => {
-    window.sessionStorage.setItem("order", order);
-  }, [order]);
-  
-  console.log("현재 order: ", order);
-  
+export const OrderProvider = ({ children }) => {
+  const [orders, setOrders] = useState([0, 0]);  // 두 메뉴 아이템의 초기 수량 설정
+
+  const updateOrder = (index, count) => {
+    const newOrders = [...orders];
+    newOrders[index] = count;
+    setOrders(newOrders);
+  };
+
   return (
-    <OrderContext.Provider value={{ order, setOrder }}>
+    <OrderContext.Provider value={{ orders, updateOrder }}>
       {children}
     </OrderContext.Provider>
   );
-}
+};
+
+export const useOrder = () => useContext(OrderContext);

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SwipeableViews from "react-swipeable-views";
 import samSo from "../Asset/samSo.png";
 import samBee from "../Asset/samBee.png";
+import { useOrder } from "../contexts/OrderContext";
 
 const Container = styled.div`
   display: flex;
@@ -10,19 +11,20 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "Arial", sans-serif;
-  padding-top: 8.0000vw;
+  padding-top: 8vw;
+  margin-bottom: 5vw;
 `;
 
 const MainText = styled.div`
-  font-size: 8.0000vw;
+  font-size: 8vw;
   font-weight: 900;
   margin-bottom: 18vw;
 `;
 
 const CountNume = styled.div`
-font-size: 6.6667vw;
-font-weight: 500;
-`
+  font-size: 6.6667vw;
+  font-weight: 500;
+`;
 
 const SlideContainer = styled.div`
   background-color: #fff;
@@ -31,14 +33,14 @@ const SlideContainer = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 8.0000vw;
+  margin-bottom: 8vw;
 `;
 
 const Image = styled.img`
   width: 60%;
   height: auto;
   border-radius: 50%;
-  margin-bottom: 5.3333vw;
+  margin-bottom: 5.3333;
 `;
 
 const Counter = styled.div`
@@ -54,8 +56,8 @@ const Button = styled.button`
   height: 21.3333vw;
   border: none;
   background-color: #f8f8f8;
-  font-size: 6.4000vw;
-  border-radius: 7.2000vw;
+  font-size: 6.4vw;
+  border-radius: 7.2vw;
 `;
 
 const Price = styled.div`
@@ -73,7 +75,7 @@ const OrderButton = styled.button`
   color: white;
   border: none;
   border-radius: 25px;
-  font-size: 4.8000vw;
+  font-size: 4.8vw;
   cursor: pointer;
 
   &:hover {
@@ -85,7 +87,7 @@ const Dot = styled.span`
   padding: 5px;
   cursor: pointer;
   border-radius: 50%;
-  background: ${(props) => (!props.isActive ? '#D9D9D9' : '#00A86B')};
+  background: ${(props) => (!props.isActive ? "#D9D9D9" : "#00A86B")};
 `;
 
 const DotsContainer = styled.div`
@@ -95,10 +97,24 @@ const DotsContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const Menu = ({ title, price, imageSrc }) => {
-  const [count, setCount] = useState(0);
-  const increment = () => setCount(count + 1);
-  const decrement = () => count > 0 && setCount(count - 1);
+const Menu = ({ title, price, imageSrc, index }) => {
+  const { orders, updateOrder } = useOrder();
+  const [count, setCount] = useState(orders[index]);
+  const increment = () => {
+    const newCount = count + 1;
+    setCount(newCount);
+    updateOrder(index, newCount);
+    console.log("주문 내역은 : ",orders);
+  };
+
+  const decrement = () => {
+    if (count > 0) {
+      const newCount = count - 1;
+      setCount(newCount);
+      updateOrder(index, newCount);
+      console.log("주문 내역은 : ",orders);
+    }
+  };
 
   return (
     <SlideContainer>
@@ -122,9 +138,13 @@ function MenuPage() {
 
   return (
     <Container>
-      <SwipeableViews enableMouseEvents index={index} onChangeIndex={handleChangeIndex}>
-        <Menu title="삼겹살 + 소세지" price="6,500" imageSrc={samSo} />
-        <Menu title="삼겹살 + 비빔면" price="5,500" imageSrc={samBee} />
+      <SwipeableViews
+        enableMouseEvents
+        index={index}
+        onChangeIndex={handleChangeIndex}
+      >
+        <Menu title="삼겹살 + 소세지" price="6,500" imageSrc={samSo} index={0}/>
+        <Menu title="삼겹살 + 비빔면" price="5,500" imageSrc={samBee} index={1}/>
       </SwipeableViews>
       <DotsContainer>
         {[0, 1].map((idx) => (
