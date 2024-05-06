@@ -8,28 +8,28 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 5.3333vw;
   font-family: "Arial", sans-serif;
 `;
 
 const MainText = styled.div`
-  font-size: 16px;
+  font-size: 4.2667vw;
   font-weight: 900;
-  margin-bottom: 30px;
+  margin-bottom: 8.0000vw;
 `;
 
 const Message = styled.p`
-  font-size: 14px; // 반응형 글자 크기
+  font-size: 3.7333vw; // 반응형 글자 크기
   text-align: center;
-  margin: 20px;
+  margin: 5.3333vw;
   color: #333;
-  margin-bottom: 100px;
+  margin-bottom: 16vw;
 `;
 
 const Button = styled.button`
   width: 60vw;
   padding: 2vw; // 반응형 패딩
-  margin: 10px;
+  margin: 2.6667vw;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -55,7 +55,7 @@ const OrderButton = styled(Button)`
 const TextLogo = styled.img`
   width: 70%;
   height: auto;
-  margin-top: 100px;
+  margin-top: 28.6667vw;
 `;
 
 function HomePage() {

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import checkMark from "../../Asset/check_icon.png";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -13,26 +14,26 @@ const Container = styled.div`
 
 const CheckIcon = styled.img`
   width: 16%; // Adjust size as needed
-  margin-bottom: 40px;
+  margin-bottom: 10.6667vw;
 
 `;
 
 const Message = styled.div`
   color: white;
-  font-size: 16px;
+  font-size: 4.2667vw;
   text-align: center;
-  padding: 0 20px;
+  padding: 0 5.3333vw;
 `;
 
 const Button = styled.button`
   background-color: white;
   width: 60%;
   color: #00A86B;
-  font-size: 16px;
-  padding: 10px 20px;
+  font-size: 4.2667vw;
+  padding: 2.6667vw 5.3333vw;
   border: none;
-  border-radius: 20px;
-  margin-top: 60px;
+  border-radius: 5.3333vw;
+  margin-top: 16.0000vw;
   cursor: pointer;
   outline: none;
 
@@ -42,9 +43,12 @@ const Button = styled.button`
 `;
 
 function QuizCompletionScreen() {
+  const navigate = useNavigate();
+
   const handleRestart = () => {
     // Implement restart logic
     console.log("Restart or review quiz");
+    navigate("/quiz-result");
   };
 
   return (

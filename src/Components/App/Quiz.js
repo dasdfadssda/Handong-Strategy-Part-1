@@ -11,30 +11,31 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "Arial", sans-serif;
-  margin-top: 20px;
+  margin-top: 5.3333vw;
 `;
 
 const QuestionText = styled.div`
-  font-size: 24px;
+  font-size: 6.4000vw;
   width: 80%;
   word-break: break-word;
-  margin-bottom: 30px;
+  margin-bottom: 8.0000vw;
+  font-family: 'Noto Sans', sans-serif;
 `;
 
 const QuestionNum = styled.div`
-  font-size: 24px;
+  font-size: 6.4000vw;
   font-weight: 900;
-  margin-bottom: 20px;
+  margin-bottom: 5.3333vw;
 `;
 
 const Button = styled.button`
   width: 80%;
-  padding: 10px;
-  margin: 10px;
+  padding: 2.6667vw;
+  margin: 2.6667vw;
   background-color: #f0f0f0;
   border: 1px solid #f0f0f0;
-  border-radius: 20px;
-  font-size: 16px;
+  border-radius: 5.3333vw;
+  font-size: 4.2667vw;
   cursor: pointer;
 
   &:hover {
@@ -53,7 +54,7 @@ const NextButton = styled.button`
   width: 20%;
   height: 20%;
   background-color: transparent;
-  margin-right: 20px;
+  margin-right: 5.3333vw;
 
   img {
     width: 100%;
@@ -72,11 +73,11 @@ const Modal = styled.div`
 const ResultIcon = styled.img`
   width: 100%;
   height: auto;
-  margin-top: 100px;
+  margin-top: 26.6667vw;
 `;
 
 const ExplanationPage = styled.div`
-  font-size: 16px;
+  font-size: 4.2667vw;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -85,16 +86,16 @@ const ExplanationPage = styled.div`
 `;
 const FlexDiv = styled.div`
   width: 100%;
-  margin-top: 100px;
+  margin-top: 26.6667vw;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 `;
 
 const ExplanationText = styled.div`
-  margin-top: 60px;
+  margin-top: 16.0000vw;
   width: 80%;
-  font-size: 20px;
+  font-size: 5.3333vw;
   word-break: break-word;
   line-height: 150%; 
 `;

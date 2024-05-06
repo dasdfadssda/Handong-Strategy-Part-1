@@ -10,17 +10,17 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "Arial", sans-serif;
-  padding-top: 30px;
+  padding-top: 8.0000vw;
 `;
 
 const MainText = styled.div`
-  font-size: 30px;
+  font-size: 8.0000vw;
   font-weight: 900;
-  margin-bottom: 50px;
+  margin-bottom: 18vw;
 `;
 
 const CountNume = styled.div`
-font-size: 25px;
+font-size: 6.6667vw;
 font-weight: 500;
 `
 
@@ -31,48 +31,49 @@ const SlideContainer = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 8.0000vw;
 `;
 
 const Image = styled.img`
-  width: 50%;
+  width: 60%;
   height: auto;
   border-radius: 50%;
+  margin-bottom: 5.3333vw;
 `;
 
 const Counter = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 20px;
+  /* margin: 5.3333vw; */
   width: 80%;
 `;
 
 const Button = styled.button`
-  width: 80px;
-  height: 80px;
+  width: 21.3333vw;
+  height: 21.3333vw;
   border: none;
   background-color: #f8f8f8;
-  font-size: 24px;
-  border-radius: 27px;
+  font-size: 6.4000vw;
+  border-radius: 7.2000vw;
 `;
 
 const Price = styled.div`
   text-align: center;
-  font-size: 25px;
+  font-size: 6.6667vw;
   font-weight: 900;
   color: #333;
   margin: 10px 0;
 `;
 
 const OrderButton = styled.button`
-  width: 100%;
+  width: 90%;
   padding: 15px;
   background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 4.8000vw;
   cursor: pointer;
 
   &:hover {

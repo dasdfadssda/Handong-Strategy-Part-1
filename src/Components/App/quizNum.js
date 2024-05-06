@@ -7,12 +7,12 @@ const ProgressBar = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 92%;
-  margin-bottom: 65px;
+  margin-bottom: 17.3333vw;
 `;
 
 const Circle = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 5.3333vw;
+  height: 5.3333vw;
   border-radius: 50%;
   background-color: #C4E8DB;
     ${(props) =>
