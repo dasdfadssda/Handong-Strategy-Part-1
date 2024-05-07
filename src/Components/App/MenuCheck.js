@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useOrder } from "../../contexts/OrderContext";
+import React, { useState, useEffect, useContext } from "react";
+import { ScoreContext } from "../../contexts/ScoreContext";
 
 const Div = styled.div`
   display: flex;
@@ -133,13 +135,29 @@ const Button = styled.button`
 
 function MenuCheck() {
   const { orders } = useOrder();
+  const [price, SetPrice] = useState(0);
+  const [sale, SetSale ] = useState(0);
+  const { score } = useContext(ScoreContext);
+
 
   const copyText = () => {
-    const text = "28350104203645 국민";  // 복사할 텍스트
+    const text = "28350104203645 국민";  
     navigator.clipboard.writeText(text)
       .then(() => alert("계좌번호가 클립보드에 복사되었습니다!"))
       .catch(err => console.error("복사에 실패했습니다:", err));
   }
+  useEffect(() => {
+    let extra = 0;  
+    if (score >= 5) {
+        extra = 700;  
+    } else if (score >= 3) {
+        extra = 500;  
+    }
+    SetPrice(orders[0] * 5300 + orders[1] * 5300 + extra); 
+    SetSale(extra);
+
+    console.log("가격 : ",price,"sale : ",sale);
+}, []); 
 
   return (
     <Div>
@@ -175,7 +193,7 @@ function MenuCheck() {
           상품금액
         </PriceCheck>
         <PriceCheck size={18} align="center">
-          18,500원
+         {price}원
         </PriceCheck>
       </FlexDiv>
       <FlexDiv justifyContent="space-between" per={80}>
@@ -183,7 +201,7 @@ function MenuCheck() {
           할인금액
         </PriceCheck>
         <PriceCheck size={18} align="center">
-          500원
+          {sale}원
         </PriceCheck>
       </FlexDiv>
       <Hr />
@@ -192,7 +210,7 @@ function MenuCheck() {
           총 결제금액
         </PriceCheck>
         <PriceCheck weight={700} align="center" color="#F04923">
-          500원
+          {price - sale}원
         </PriceCheck>
       </FlexDiv>
       <PriceCheck weight={300} align="center" size={17} bottom={3}>
