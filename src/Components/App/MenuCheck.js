@@ -9,7 +9,7 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f3f7f6;
-  margin-bottom: 5vw;
+  padding-bottom: 5vw;
 `;
 
 const TitleText = styled.div`
@@ -205,7 +205,7 @@ function MenuCheck() {
         </PriceCheck>
       </FlexDiv>
       <Hr />
-      <FlexDiv justifyContent="space-between" per={80} bottom={7.2}>
+      <FlexDiv justifyContent="space-between" per={80} bottom={7}>
         <PriceCheck weight={500} align="center">
           총 결제금액
         </PriceCheck>
@@ -213,10 +213,7 @@ function MenuCheck() {
           {price - sale}원
         </PriceCheck>
       </FlexDiv>
-      <PriceCheck weight={300} align="center" size={17} bottom={3}>
-        28350104203645 국민으로 <br />총 결제금액을 보내주세요!
-      </PriceCheck>
-      <Button onClick={copyText}>계좌번호 복사</Button>
+      <Button onClick={copyText}>주문하기</Button>
     </Div>
   );
 }
