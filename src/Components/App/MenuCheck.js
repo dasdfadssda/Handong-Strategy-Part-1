@@ -1,0 +1,206 @@
+import styled from "styled-components";
+import { useOrder } from "../../contexts/OrderContext";
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f7f6;
+  margin-bottom: 5vw;
+`;
+
+const TitleText = styled.div`
+  font-size: 5.8667vw;
+  line-height: 140%;
+  font-weight: 900;
+  margin-top: 3vw;
+  margin-bottom: 8.2667vw;
+`;
+
+const WhiteBackBox = styled.div`
+  width: 78vw;
+  height: 76vw;
+  padding: 5.3333vw;
+  border-radius: 5.3333vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 6.4vw;
+  background: #fefefe;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+`;
+
+const NameText = styled.div`
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 4.5333vw;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin-bottom: 9vw;
+`;
+
+const FlexDiv = styled.div`
+  width: ${(props) => props.per || 100}%;
+  display: flex;
+  flex-direction: ${(props) => props.col || "row"};
+  align-items: ${(props) => props.ali || "center"};
+  justify-content: ${(props) => props.justifyContent || "flex-start"};
+  margin-bottom: ${(props) => props.bottom || 0}vw;
+`;
+
+const MenuImg = styled.img`
+  width: 20vw;
+  height: 20vw;
+  margin-right: 3.4667vw;
+`;
+
+const Menuname = styled.div`
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 3.7333vw;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 4vw;
+`;
+
+const MenuNum = styled.div`
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 3.7333vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+`;
+
+const Price = styled.div`
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 4.8000vw;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+`;
+
+const PriceCheck = styled.div`
+  color: ${(props) => props.color || "#000"};
+  text-align: ${(props) => props.align || "start"};
+  font-family: "Noto Sans";
+  font-size: ${(props) => props.size || 20}px;
+  font-style: normal;
+  font-weight: ${(props) => props.weight || 600};
+  width: ${(props) => props.per}%;
+  margin-bottom: ${(props) => props.bottom || 0}vw;
+`;
+
+const Hr = styled.hr`
+  width: 80%;
+  height: 0.8px;
+  background-color: #8b8b8b;
+  margin-top: 5.8667vw;
+  margin-bottom: 3.7333vw;
+  border: none;
+`;
+
+const Button = styled.button`
+  width: 80%;
+  padding: 2vw; // 반응형 패딩
+  margin-bottom: 2.9333vw;
+  background-color: #00a86b;
+  color: white;
+  border: none;
+  color: #fff;
+
+  font-family: "Noto Sans";
+  font-size: 6.4000vw;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  cursor: pointer;
+  border-radius: 5.3333vw;
+
+  &:hover {
+    background-color: #00a86b;
+  }
+`;
+
+function MenuCheck() {
+  const { orders } = useOrder();
+
+  const copyText = () => {
+    const text = "28350104203645 국민";  // 복사할 텍스트
+    navigator.clipboard.writeText(text)
+      .then(() => alert("계좌번호가 클립보드에 복사되었습니다!"))
+      .catch(err => console.error("복사에 실패했습니다:", err));
+  }
+
+  return (
+    <Div>
+      <TitleText>주문 내역</TitleText>
+      <WhiteBackBox>
+        <NameText>한동 공략 1조</NameText>
+        <FlexDiv bottom={8.8}>
+          <MenuImg src={require("../../Asset/SamSoSq.png")} />
+          <FlexDiv col="column" ali="flex-start">
+            <Menuname>삼겹살 + 소세지</Menuname>
+            <FlexDiv justifyContent="space-between">
+              <MenuNum>수량 : {orders[0]}</MenuNum>
+              <Price>{orders[0] * 5300} 원</Price>
+            </FlexDiv>
+          </FlexDiv>
+        </FlexDiv>
+        <FlexDiv>
+          <MenuImg src={require("../../Asset/SamBeeSq.png")} />
+          <FlexDiv col="column" ali="flex-start">
+            <Menuname>삼겹살 + 비빔면</Menuname>
+            <FlexDiv justifyContent="space-between">
+              <MenuNum>수량 : {orders[1]}</MenuNum>
+              <Price>{orders[1] * 5300} 원</Price>
+            </FlexDiv>
+          </FlexDiv>
+        </FlexDiv>
+      </WhiteBackBox>
+      <PriceCheck per={80} bottom={8}>
+        결제 내역
+      </PriceCheck>
+      <FlexDiv justifyContent="space-between" per={80} bottom={5.6}>
+        <PriceCheck weight={500} align="center">
+          상품금액
+        </PriceCheck>
+        <PriceCheck size={18} align="center">
+          18,500원
+        </PriceCheck>
+      </FlexDiv>
+      <FlexDiv justifyContent="space-between" per={80}>
+        <PriceCheck weight={500} align="center">
+          할인금액
+        </PriceCheck>
+        <PriceCheck size={18} align="center">
+          500원
+        </PriceCheck>
+      </FlexDiv>
+      <Hr />
+      <FlexDiv justifyContent="space-between" per={80} bottom={7.2}>
+        <PriceCheck weight={500} align="center">
+          총 결제금액
+        </PriceCheck>
+        <PriceCheck weight={700} align="center" color="#F04923">
+          500원
+        </PriceCheck>
+      </FlexDiv>
+      <PriceCheck weight={300} align="center" size={17} bottom={3}>
+        28350104203645 국민으로 <br />총 결제금액을 보내주세요!
+      </PriceCheck>
+      <Button onClick={copyText}>계좌번호 복사</Button>
+    </Div>
+  );
+}
+
+export default MenuCheck;

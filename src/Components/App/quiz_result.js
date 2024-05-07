@@ -15,6 +15,7 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+  margin-bottom: 5vw;
 `;
 
 const UrScore = styled.div`

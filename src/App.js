@@ -9,6 +9,7 @@ import QuizCompletionScreen from "./Components/App/quizcomplete.js";
 import { ScoreProvider } from "./contexts/ScoreContext.js";
 import QuizResult from "./Components/App/quiz_result.js";
 import { OrderProvider } from "./contexts/OrderContext.js";
+import MenuCheck from "./Components/App/MenuCheck.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               {/* 기본 화면 설정 */}
               <Route path="/" element={<HomePage />} />
               <Route path="/order" element={<MenuPage />} />
+              <Route path="/menuCheck" element={<MenuCheck />} />
               <Route path="/quiz" element={<QuizPage />} />
               <Route path="/quiz-finish" element={<QuizCompletionScreen />} />
               <Route path="/quiz-result" element={<QuizResult />} />

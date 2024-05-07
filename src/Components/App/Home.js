@@ -63,10 +63,10 @@ function HomePage() {
 
   return (
     <Container>
-      <MainText>안녕하세요! 한동 공부 1조입니다.</MainText>
+      <MainText>안녕하세요! 한동 공략 1조입니다.</MainText>
       <Message>
         퀴즈 3개 이상 맞춘 <br />
-        가족을 환하게 드리고 있습니다! <br />
+        가격을 할인해 드리고 있습니다! <br />
         많은 참여 부탁드립니다😊
       </Message>
       <OrderButton onClick={() => navigate("/order")}>주문하기</OrderButton>

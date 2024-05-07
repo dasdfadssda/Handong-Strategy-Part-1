@@ -4,6 +4,7 @@ import SwipeableViews from "react-swipeable-views";
 import samSo from "../Asset/samSo.png";
 import samBee from "../Asset/samBee.png";
 import { useOrder } from "../contexts/OrderContext";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -135,6 +136,8 @@ function MenuPage() {
   const handleChangeIndex = (index) => {
     setIndex(index);
   };
+  const navigate = useNavigate();
+
 
   return (
     <Container>
@@ -143,8 +146,8 @@ function MenuPage() {
         index={index}
         onChangeIndex={handleChangeIndex}
       >
-        <Menu title="삼겹살 + 소세지" price="6,500" imageSrc={samSo} index={0}/>
-        <Menu title="삼겹살 + 비빔면" price="5,500" imageSrc={samBee} index={1}/>
+        <Menu title="삼겹살 + 소세지" price="5,300" imageSrc={samSo} index={0}/>
+        <Menu title="삼겹살 + 비빔면" price="5,300" imageSrc={samBee} index={1}/>
       </SwipeableViews>
       <DotsContainer>
         {[0, 1].map((idx) => (
@@ -155,7 +158,7 @@ function MenuPage() {
           />
         ))}
       </DotsContainer>
-      <OrderButton>주문하기</OrderButton>
+      <OrderButton onClick={() => navigate("/menuCheck")}>주문하기</OrderButton>
     </Container>
   );
 }
