@@ -117,6 +117,8 @@ const Menu = ({ title, price, imageSrc, index }) => {
     }
   };
 
+
+
   return (
     <SlideContainer>
       <MainText>{title}</MainText>
@@ -137,6 +139,17 @@ function MenuPage() {
     setIndex(index);
   };
   const navigate = useNavigate();
+  const { orders } = useOrder();  
+
+  const handleOrderClick = () => {
+    const totalOrders = orders.reduce((acc, cur) => acc + cur, 0);  // 주문 총 수량 계산
+    if (totalOrders > 0) {
+      navigate("/menuCheck");  // 주문 수량이 0보다 크면 페이지 이동
+    } else {
+      alert("1개 이상을 선택해주세요!");  // 주문 수량이 0이면 경고 메시지 출력
+    }
+  };
+
 
 
   return (
@@ -158,7 +171,7 @@ function MenuPage() {
           />
         ))}
       </DotsContainer>
-      <OrderButton onClick={() => navigate("/menuCheck")}>주문하기</OrderButton>
+      <OrderButton onClick={handleOrderClick}>주문하기</OrderButton>
     </Container>
   );
 }

@@ -16,7 +16,7 @@ const TitleText = styled.div`
   font-size: 5.8667vw;
   line-height: 140%;
   font-weight: 900;
-  margin-top: 3vw;
+  margin-top: 8vw;
   margin-bottom: 8.2667vw;
 `;
 
@@ -139,13 +139,6 @@ function MenuCheck() {
   const [sale, SetSale ] = useState(0);
   const { score } = useContext(ScoreContext);
 
-
-  const copyText = () => {
-    const text = "28350104203645 국민";  
-    navigator.clipboard.writeText(text)
-      .then(() => alert("계좌번호가 클립보드에 복사되었습니다!"))
-      .catch(err => console.error("복사에 실패했습니다:", err));
-  }
   useEffect(() => {
     let extra = 0;  
     if (score >= 5) {
@@ -213,7 +206,7 @@ function MenuCheck() {
           {price - sale}원
         </PriceCheck>
       </FlexDiv>
-      <Button onClick={copyText}>주문하기</Button>
+      <Button>주문하기</Button>
     </Div>
   );
 }

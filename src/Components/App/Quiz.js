@@ -183,6 +183,7 @@ function QuizApp() {
     setShowQuiz(false);
   };
 
+  
   return (
     <Container>
       <ProgressComponent step={currentQuestionIndex} />
