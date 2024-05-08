@@ -22,8 +22,8 @@ const Message = styled.p`
   font-size: 3.7333vw; // 반응형 글자 크기
   text-align: center;
   margin: 5.3333vw;
+  margin-bottom: 1.8667vw;
   color: #333;
-  margin-bottom: 16vw;
 `;
 
 const Button = styled.button`
@@ -59,6 +59,32 @@ const TextLogo = styled.img`
   margin-top: 10vw;
 `;
 
+const Modal = styled.button`
+  position: fixed;
+  top: 96%;
+  left: 92%;
+  transform: translate(-50%, -50%);
+  display: 'block';
+  border: none;
+  background-color: transparent;
+`;
+
+const NewQuizImg = styled.img`
+  width: 45px;
+  height: auto;
+`;
+
+const TText =styled.div`
+color: var(--Color-2, #363636);
+text-align: center;
+font-family: "Noto Sans KR";
+font-size: 2.5vw;
+font-style: normal;
+font-weight: 400;
+line-height: 140%;
+margin-bottom: 12vw;
+`
+
 function HomePage() {
   const navigate = useNavigate();
 
@@ -70,10 +96,14 @@ function HomePage() {
         가격을 할인해 드리고 있습니다! <br />
         많은 참여 부탁드립니다😊
       </Message>
+      <TText>(3, 4개 500원 할인 / 5개 700원 할인 - 재응시 1회)</TText>
       <OrderButton onClick={() => navigate("/order")}>주문하기</OrderButton>
       {/* <Button onClick={() => navigate("/order-CheckMan")}>퀴즈풀기</Button> */}
       <Button onClick={() => navigate("/quiz")}>퀴즈풀기</Button>
       <TextLogo src={require("../../Asset/logo.png")} />
+      <Modal onClick={() => navigate("/vote")}>
+      <NewQuizImg src={require("../../Asset/notify.png")} />
+      </Modal>
     </Container>
   );
 }

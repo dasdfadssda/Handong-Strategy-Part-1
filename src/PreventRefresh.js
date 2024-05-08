@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 
 function PreventRefresh() {
-  const navigate = useNavigate();
   const location = useLocation();  // 현재 경로를 얻기 위해 useLocation 사용
 
   useEffect(() => {
@@ -17,13 +16,13 @@ function PreventRefresh() {
       };
 
       window.addEventListener("beforeunload", handleBeforeUnload);
-      navigate("/");
+      // navigate("/");
 
       return () => {
         window.removeEventListener("beforeunload", handleBeforeUnload);
       };
     }
-  }, [location.pathname]); // location.pathname 의존성 추가
+  }, []); // location.pathname 의존성 추가
 
   return null; // UI가 없는 컴포넌트
 }

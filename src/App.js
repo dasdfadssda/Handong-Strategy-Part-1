@@ -14,14 +14,13 @@ import OrderCompletionScreen from "./Components/App/orderComplete.js";
 import PreventRefresh from "./PreventRefresh.js";
 import OrderCkeckMan from "./Components/App/Web/OrderCkeckMan.js";
 import GirsRoomStory from "./Components/App/Web/GirsRoomStory.js";
-
-
+import VoteScreen from "./Components/App/Web/VotePage.js";
+import LastPage from "./Components/App/Web/LastPage.js";
 
 function App() {
-
   return (
     <Router>
-      <PreventRefresh/>
+      <PreventRefresh />
       <ThemeProvider theme={theme}>
         <ScoreProvider>
           <OrderProvider>
@@ -34,9 +33,11 @@ function App() {
               <Route path="/quiz" element={<QuizPage />} />
               <Route path="/quiz-finish" element={<QuizCompletionScreen />} />
               <Route path="/quiz-result" element={<QuizResult />} />
-              <Route path="/order-submit" element={<OrderCompletionScreen/>}/>
-              <Route path="/order-CheckMan" element={<OrderCkeckMan/>}/>
-              <Route path="/order-GirsRoomStory" element={<GirsRoomStory/>}/>
+              <Route path="/order-submit" element={<OrderCompletionScreen />} />
+              <Route path="/order-CheckMan" element={<OrderCkeckMan />} />
+              <Route path="/order-GirsRoomStory" element={<GirsRoomStory />} />
+              <Route path="/vote" element={<VoteScreen />} />
+              <Route path="/LastPage" element={<LastPage />} />
             </Routes>
           </OrderProvider>
         </ScoreProvider>
