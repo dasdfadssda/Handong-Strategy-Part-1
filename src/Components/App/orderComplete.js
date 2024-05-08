@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import checkMark from "../../Asset/CheckGreen.png";
 import { useNavigate } from "react-router-dom";
+import { doc, updateDoc } from "firebase/firestore";
+import { dbService } from "../../fbase";
 
 const Container = styled.div`
   display: flex;
@@ -90,47 +92,50 @@ const ExplainText = styled.div`
 `;
 
 const StyledInput = styled.input`
-  width: 80%; 
+  width: 80%;
   padding: 3vw 3vw;
-  border-radius: 2.9333vw; 
-  background: #E5FCF4; 
-  border: none; 
+  border-radius: 2.9333vw;
+  background: #e5fcf4;
+  border: none;
   margin-top: 37.3333vw;
-  color: #797979; 
-  font-family: "Noto Sans"; 
-  font-size: 3.7333vw; 
-  font-style: normal; 
-  font-weight: 400; 
-  line-height: 140%; 
+  color: #797979;
+  font-family: "Noto Sans";
+  font-size: 3.7333vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
 
-  &::placeholder { 
+  &::placeholder {
     color: #797979;
   }
 
-  &:focus { // 포커스 시 스타일
+  &:focus {
+    // 포커스 시 스타일
     outline: none; // 기본 아웃라인 제거
   }
 `;
 
 const SubmitButton = styled.button`
-width: 100%;
-height: 62px;
-background-color: #00A86B;
-color: #FFF;
-text-align: center;
-font-family: "Noto Sans";
-font-size: 4.2667vw;
-font-style: normal;
-font-weight: 500;
-line-height: 140%;
-border: none;
-margin-top: 12.2667vw;
+  width: 100%;
+  height: 62px;
+  background-color: #00a86b;
+  color: #fff;
+  text-align: center;
+  font-family: "Noto Sans";
+  font-size: 4.2667vw;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  border: none;
+  margin-top: 12.2667vw;
 `;
 
 function OrderCompletionScreen() {
   const navigate = useNavigate();
 
   const [isCopied, setIsCopied] = useState(false);
+  const [docId, setDocId] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState(""); // 전화번호 상태 변수 추가
 
   const handleCopy = async () => {
     try {
@@ -139,6 +144,25 @@ function OrderCompletionScreen() {
     } catch (err) {
       console.error("Failed to copy: ", err);
     }
+  };
+
+  useEffect(() => {
+    setDocId(localStorage.getItem("id"));
+  }, []);
+
+  const handleOnUpdate = async () => {
+    const docRef = doc(dbService, "order", docId);
+    await updateDoc(docRef, {
+      phoneNumber: phoneNumber, // 업데이트 문서에 전화번호 사용
+    });
+    if (docRef) {
+      console.log("update 성공");
+      navigate("/");
+    }
+  };
+
+  const handleChange = (event) => {
+    setPhoneNumber(event.target.value); // 입력 필드가 변경될 때마다 phoneNumber 상태 업데이트
   };
 
   return (
@@ -159,7 +183,11 @@ function OrderCompletionScreen() {
         />
         {isCopied ? "복사완료" : "복사하기"}
       </Button>
-      <StyledInput placeholder="휴대폰 번호" />
+      <StyledInput
+        placeholder="휴대폰 번호"
+        value={phoneNumber} 
+        onChange={handleChange}
+      />
       <ExplainText>
         대기시간이 길거나 예약이 필요한 경우에 작성하여 주세요.
         <br />
@@ -168,7 +196,7 @@ function OrderCompletionScreen() {
         <br />
         이용해주셔서 감사합니다.
       </ExplainText>
-      <SubmitButton>제출</SubmitButton>
+      <SubmitButton onClick={handleOnUpdate}>제출</SubmitButton>
     </Container>
   );
 }

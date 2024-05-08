@@ -3,6 +3,8 @@ import { useOrder } from "../../contexts/OrderContext";
 import React, { useState, useEffect, useContext } from "react";
 import { ScoreContext } from "../../contexts/ScoreContext";
 import { useNavigate } from "react-router-dom";
+import { dbService } from "../../fbase";
+import { collection, addDoc } from "firebase/firestore";
 
 const Div = styled.div`
   display: flex;
@@ -140,6 +142,7 @@ function MenuCheck() {
   const [sale, SetSale] = useState(0);
   const { score } = useContext(ScoreContext);
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     let extra = 0;
@@ -153,6 +156,27 @@ function MenuCheck() {
 
     console.log("가격 : ", price, "sale : ", sale);
   }, []);
+
+  const handleOnSubmit = async () => {
+    console.log("주문 시작");
+
+    const orderData = {
+      time: new Date(), 
+      menuCount: orders, 
+      price: price,
+      phoneNumber: '',
+      status : 0
+    };
+  
+    try {
+      const docRef = await addDoc(collection(dbService, "order"), orderData);
+      console.log("Document written with ID: ", docRef.id);
+      navigate("/order-submit")
+      localStorage.setItem("id", docRef.id);
+    } catch (error) {
+      console.error("Error writing document: ", error);
+    }
+  }
 
   return (
     <Div>
@@ -208,7 +232,7 @@ function MenuCheck() {
           {price - sale}원
         </PriceCheck>
       </FlexDiv>
-      <Button onClick={() => navigate("/order-submit")}>주문하기</Button>
+      <Button onClick={handleOnSubmit}>주문하기</Button>
     </Div>
   );
 }

@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
+
 const firebaseConfig = {
   apiKey: "AIzaSyB3qV5Dys_ANH75eXpjTujG8b9LW9APi1w",
   authDomain: "handong-strategy-part-1.firebaseapp.com",
@@ -13,6 +13,7 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const dbService = getFirestore(app); 
 const auth = getAuth(app);
+
+export { app, dbService, auth };

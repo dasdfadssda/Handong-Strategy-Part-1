@@ -7,8 +7,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 5.3333vw;
+  padding-bottom: 0;
   font-family: "Arial", sans-serif;
 `;
 
@@ -16,6 +15,7 @@ const MainText = styled.div`
   font-size: 4.2667vw;
   font-weight: 900;
   margin-bottom: 8.0000vw;
+  margin-top: 14vw;
 `;
 
 const Message = styled.p`
@@ -54,9 +54,9 @@ const OrderButton = styled(Button)`
 `;
 
 const TextLogo = styled.img`
-  width: 70%;
+  width: 100%;
   height: auto;
-  margin-top: 28.6667vw;
+  margin-top: 10vw;
 `;
 
 function HomePage() {
@@ -72,7 +72,7 @@ function HomePage() {
       </Message>
       <OrderButton onClick={() => navigate("/order")}>주문하기</OrderButton>
       <Button onClick={() => navigate("/quiz")}>퀴즈풀기</Button>
-      <TextLogo src={require("../../Asset/Text_logo.png")} />
+      <TextLogo src={require("../../Asset/logo.png")} />
     </Container>
   );
 }
