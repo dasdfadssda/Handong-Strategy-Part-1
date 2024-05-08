@@ -71,7 +71,7 @@ function HomePage() {
         많은 참여 부탁드립니다😊
       </Message>
       <OrderButton onClick={() => navigate("/order")}>주문하기</OrderButton>
-      <Button onClick={() => navigate("/quiz")}>퀴즈풀기</Button>
+      <Button onClick={() => navigate("/order-CheckMan")}>퀴즈풀기</Button>
       <TextLogo src={require("../../Asset/logo.png")} />
     </Container>
   );

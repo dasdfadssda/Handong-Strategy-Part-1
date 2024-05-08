@@ -158,6 +158,7 @@ function OrderCompletionScreen() {
     if (docRef) {
       console.log("update 성공");
       navigate("/");
+      alert("");
     }
   };
 

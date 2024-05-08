@@ -12,6 +12,7 @@ import { OrderProvider } from "./contexts/OrderContext.js";
 import MenuCheck from "./Components/App/MenuCheck.js";
 import OrderCompletionScreen from "./Components/App/orderComplete.js";
 import PreventRefresh from "./PreventRefresh.js";
+import OrderCkeckMan from "./Components/App/Web/OrderCkeckMan.js";
 
 
 
@@ -33,6 +34,7 @@ function App() {
               <Route path="/quiz-finish" element={<QuizCompletionScreen />} />
               <Route path="/quiz-result" element={<QuizResult />} />
               <Route path="/order-submit" element={<OrderCompletionScreen/>}/>
+              <Route path="/order-CheckMan" element={<OrderCkeckMan/>}/>
             </Routes>
           </OrderProvider>
         </ScoreProvider>

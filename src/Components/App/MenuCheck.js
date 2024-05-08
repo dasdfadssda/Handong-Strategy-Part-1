@@ -4,7 +4,8 @@ import React, { useState, useEffect, useContext } from "react";
 import { ScoreContext } from "../../contexts/ScoreContext";
 import { useNavigate } from "react-router-dom";
 import { dbService } from "../../fbase";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
+import { PacmanLoader } from "react-spinners";
 
 const Div = styled.div`
   display: flex;
@@ -137,12 +138,12 @@ const Button = styled.button`
 `;
 
 function MenuCheck() {
-  const { orders } = useOrder();
+  const { orders, setOrders } = useOrder();
   const [price, SetPrice] = useState(0);
   const [sale, SetSale] = useState(0);
   const { score } = useContext(ScoreContext);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     let extra = 0;
@@ -159,23 +160,53 @@ function MenuCheck() {
 
   const handleOnSubmit = async () => {
     console.log("주문 시작");
+    setIsLoading(true);
 
     const orderData = {
-      time: new Date(), 
-      menuCount: orders, 
+      time: new Date(),
+      menuCount: orders,
       price: price,
-      phoneNumber: '',
-      status : 0
+      phoneNumber: "",
+      status: 0,
     };
-  
+
     try {
       const docRef = await addDoc(collection(dbService, "order"), orderData);
       console.log("Document written with ID: ", docRef.id);
-      navigate("/order-submit")
+
+      await updateDoc(doc(dbService, "order", docRef.id), {
+        id: docRef.id
+      });
+      navigate("/order-submit");
       localStorage.setItem("id", docRef.id);
+      SetPrice(0);
+      SetSale(0);
+      setOrders([0, 0]);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error writing document: ", error);
     }
+  };
+
+  const override = {
+    display: "flex",
+    margin: "0 auto",
+    marginTop: "300px",
+    borderColor: "#00a86b",
+    textAlign: "center",
+  };
+
+  if (isLoading) {
+    return (
+      <div>
+        <PacmanLoader
+          color="#00a86b"
+          loading={isLoading}
+          cssOverride={override}
+          size={50}
+        />
+      </div>
+    );
   }
 
   return (
