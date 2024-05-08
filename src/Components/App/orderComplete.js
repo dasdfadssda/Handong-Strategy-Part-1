@@ -158,7 +158,7 @@ function OrderCompletionScreen() {
     if (docRef) {
       console.log("update 성공");
       navigate("/");
-      alert("");
+      alert("주문 완료되었다. 기다려라");
     }
   };
 

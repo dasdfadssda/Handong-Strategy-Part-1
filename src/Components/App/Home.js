@@ -14,7 +14,7 @@ const Container = styled.div`
 const MainText = styled.div`
   font-size: 4.2667vw;
   font-weight: 900;
-  margin-bottom: 8.0000vw;
+  margin-bottom: 8vw;
   margin-top: 14vw;
 `;
 
@@ -30,23 +30,23 @@ const Button = styled.button`
   width: 60vw;
   padding: 2vw; // 반응형 패딩
   margin: 2.6667vw;
-  background-color: #00A86B;
+  background-color: #00a86b;
   color: white;
   border: none;
   font-size: 4vw; // 반응형 글자 크기
   cursor: pointer;
   border-radius: 41.5px;
-  border: 1px solid #00A86B; // 초록색 태두리
+  border: 1px solid #00a86b; // 초록색 태두리
 
   &:hover {
-    background-color: #00A86B;
+    background-color: #00a86b;
   }
 `;
 
 const OrderButton = styled(Button)`
   background-color: white; // 흰색 배경
-  color: #00A86B; // 초록색 글자
-  border: 1px solid #00A86B; // 초록색 태두리
+  color: #00a86b; // 초록색 글자
+  border: 1px solid #00a86b; // 초록색 태두리
 
   &:hover {
     background-color: #f0f0f0; // 호버 시 배경 색 변경
@@ -71,7 +71,8 @@ function HomePage() {
         많은 참여 부탁드립니다😊
       </Message>
       <OrderButton onClick={() => navigate("/order")}>주문하기</OrderButton>
-      <Button onClick={() => navigate("/order-CheckMan")}>퀴즈풀기</Button>
+      {/* <Button onClick={() => navigate("/order-CheckMan")}>퀴즈풀기</Button> */}
+      <Button onClick={() => navigate("/quiz")}>퀴즈풀기</Button>
       <TextLogo src={require("../../Asset/logo.png")} />
     </Container>
   );
