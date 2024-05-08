@@ -37,6 +37,8 @@ const Button = styled.button`
   border-radius: 5.3333vw;
   font-size: 4.2667vw;
   cursor: pointer;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)}; 
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')}; 
 
   &:hover {
     background-color: #f0f0f0;
@@ -183,7 +185,7 @@ function QuizApp() {
     setShowQuiz(false);
   };
 
-  
+
   return (
     <Container>
       <ProgressComponent step={currentQuestionIndex} />
@@ -196,6 +198,7 @@ function QuizApp() {
               key={index}
               onClick={() => handleAnswerClick(option)}
               className={selectedAnswer === option ? "selected" : ""}
+              disabled={showModal}  
             >
               {option}
             </Button>

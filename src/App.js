@@ -10,6 +10,7 @@ import { ScoreProvider } from "./contexts/ScoreContext.js";
 import QuizResult from "./Components/App/quiz_result.js";
 import { OrderProvider } from "./contexts/OrderContext.js";
 import MenuCheck from "./Components/App/MenuCheck.js";
+import OrderCompletionScreen from "./Components/App/orderComplete.js";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/quiz" element={<QuizPage />} />
               <Route path="/quiz-finish" element={<QuizCompletionScreen />} />
               <Route path="/quiz-result" element={<QuizResult />} />
+              <Route path="/order-submit" element={<OrderCompletionScreen/>}/>
             </Routes>
           </OrderProvider>
         </ScoreProvider>

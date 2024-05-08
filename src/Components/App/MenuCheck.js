@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useOrder } from "../../contexts/OrderContext";
 import React, { useState, useEffect, useContext } from "react";
 import { ScoreContext } from "../../contexts/ScoreContext";
+import { useNavigate } from "react-router-dom";
 
 const Div = styled.div`
   display: flex;
@@ -138,6 +139,7 @@ function MenuCheck() {
   const [price, SetPrice] = useState(0);
   const [sale, SetSale ] = useState(0);
   const { score } = useContext(ScoreContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let extra = 0;  
@@ -206,7 +208,7 @@ function MenuCheck() {
           {price - sale}원
         </PriceCheck>
       </FlexDiv>
-      <Button>주문하기</Button>
+      <Button onClick={() => navigate("/order-submit")}>주문하기</Button>
     </Div>
   );
 }
