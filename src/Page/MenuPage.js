@@ -159,8 +159,8 @@ function MenuPage() {
         index={index}
         onChangeIndex={handleChangeIndex}
       >
-        <Menu title="삼겹살 + 소세지" price="5,300" imageSrc={samSo} index={0}/>
-        <Menu title="삼겹살 + 비빔면" price="5,300" imageSrc={samBee} index={1}/>
+        <Menu title="삼쏘(소세지임)" price="5,300" imageSrc={samSo} index={0}/>
+        <Menu title="비쌈(별로 안비싸요)" price="5,300" imageSrc={samBee} index={1}/>
       </SwipeableViews>
       <DotsContainer>
         {[0, 1].map((idx) => (

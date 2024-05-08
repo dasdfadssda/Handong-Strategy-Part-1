@@ -158,7 +158,7 @@ function OrderCompletionScreen() {
     if (docRef) {
       console.log("update 성공");
       navigate("/");
-      alert("주문 완료되었다. 기다려라");
+      alert("주문 감사드립니다! \n맛있게, 금방 조리해드리겠습니다.");
     }
   };
 
@@ -173,7 +173,7 @@ function OrderCompletionScreen() {
         <span>주문</span>이 완료되었습니다.
       </Message>
       <AcountText>28350104203645 국민 (한동공략1조)</AcountText>
-      <SubmitText>입금 후 내역을 제일 못생긴 친구에게 보여주세요.</SubmitText>
+      <SubmitText> 입금 후 내역을 부스 운영자들에게 보여주세요.</SubmitText>
       <Button onClick={handleCopy}>
         <Icon
           src={

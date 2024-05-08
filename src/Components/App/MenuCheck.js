@@ -147,7 +147,7 @@ function MenuCheck() {
 
   useEffect(() => {
     let extra = 0;
-    if (score = 5) {
+    if (score == 5) {
       extra = 700;
     } else if (score >= 3) {
       extra = 500;

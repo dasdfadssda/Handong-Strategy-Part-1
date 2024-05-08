@@ -14,25 +14,25 @@ const Circle = styled.div`
   width: 5.3333vw;
   height: 5.3333vw;
   border-radius: 50%;
-  background-color: #C4E8DB;
-    ${(props) =>
-      props.active &&
-      css`
-        background-color: #00A86B;
-      `};
+  background-color: #c4e8db;
+  ${(props) =>
+    props.active &&
+    css`
+      background-color: #00a86b;
+    `};
 `;
 
 const Line = styled.div`
   flex-grow: 1;
   height: 1px;
-  border-top: 2px dashed #C4E8DB;
+  border-top: 2px dashed #c4e8db;
   margin-left: 5px;
   margin-right: 5px;
 
   ${(props) =>
     props.active &&
     css`
-      border-color: #00A86B;
+      border-color: #00a86b;
     `}
 `;
 
@@ -40,16 +40,15 @@ const ProgressComponent = ({ step }) => {
   return (
     <ThemeProvider theme={theme}>
       <ProgressBar>
-
         <Circle active={step > -1} />
-        <Line active={step > -1} />
-        <Circle active={step > 0} />
         <Line active={step > 0} />
+        <Circle active={step > 0} />
+        <Line active={step > 1} />
         <Circle active={step > 1} />
         <Line active={step > 2} />
-        <Circle active={step > 2} />
-        <Line active={step > 3} />
         <Circle active={step > 3} />
+        <Line active={step > 3} />
+        <Circle active={step > 4} />
       </ProgressBar>
     </ThemeProvider>
   );

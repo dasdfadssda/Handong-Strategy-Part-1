@@ -149,7 +149,7 @@ function QuizApp() {
         setShowModal(false);
         setShowQuiz(true);
         setSelectedAnswer(null);
-      }, 2000);
+      }, 1500);
 
       return () => clearTimeout(timer);
     }

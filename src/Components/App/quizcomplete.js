@@ -54,9 +54,9 @@ function QuizCompletionScreen() {
   return (
     <Container>
       <CheckIcon src={checkMark} alt="Check Mark" />
-      <Message>모든 문제를 다 풀었습니다!</Message>
-      <Message>정답을 확인하거나 가실까요?</Message>
-      <Button onClick={handleRestart}>정답 확인하러 가기</Button>
+      <Message>모든 문제를 다 푸셨습니다!</Message>
+      <Message> 점수를 확인하러 가실까요? </Message>
+      <Button onClick={handleRestart}>점수 확인하러 가기</Button>
     </Container>
   );
 }
