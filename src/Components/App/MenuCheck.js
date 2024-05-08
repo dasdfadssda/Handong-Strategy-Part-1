@@ -86,7 +86,7 @@ const Price = styled.div`
   color: #000;
   text-align: center;
   font-family: "Noto Sans";
-  font-size: 4.8000vw;
+  font-size: 4.8vw;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
@@ -122,7 +122,7 @@ const Button = styled.button`
   color: #fff;
 
   font-family: "Noto Sans";
-  font-size: 6.4000vw;
+  font-size: 6.4vw;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
@@ -137,22 +137,22 @@ const Button = styled.button`
 function MenuCheck() {
   const { orders } = useOrder();
   const [price, SetPrice] = useState(0);
-  const [sale, SetSale ] = useState(0);
+  const [sale, SetSale] = useState(0);
   const { score } = useContext(ScoreContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    let extra = 0;  
+    let extra = 0;
     if (score >= 5) {
-        extra = 700;  
+      extra = 700;
     } else if (score >= 3) {
-        extra = 500;  
+      extra = 500;
     }
-    SetPrice(orders[0] * 5300 + orders[1] * 5300 + extra); 
-    SetSale(extra);
+    SetPrice(orders[0] * 5300 + orders[1] * 5300);
+    SetSale(extra * orders[0] + extra * orders[1]);
 
-    console.log("가격 : ",price,"sale : ",sale);
-}, []); 
+    console.log("가격 : ", price, "sale : ", sale);
+  }, []);
 
   return (
     <Div>
@@ -188,7 +188,7 @@ function MenuCheck() {
           상품금액
         </PriceCheck>
         <PriceCheck size={18} align="center">
-         {price}원
+          {price}원
         </PriceCheck>
       </FlexDiv>
       <FlexDiv justifyContent="space-between" per={80}>

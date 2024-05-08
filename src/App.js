@@ -11,10 +11,15 @@ import QuizResult from "./Components/App/quiz_result.js";
 import { OrderProvider } from "./contexts/OrderContext.js";
 import MenuCheck from "./Components/App/MenuCheck.js";
 import OrderCompletionScreen from "./Components/App/orderComplete.js";
+import PreventRefresh from "./PreventRefresh.js";
+
+
 
 function App() {
+
   return (
     <Router>
+      <PreventRefresh/>
       <ThemeProvider theme={theme}>
         <ScoreProvider>
           <OrderProvider>
