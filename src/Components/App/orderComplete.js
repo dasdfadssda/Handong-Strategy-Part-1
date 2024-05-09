@@ -26,6 +26,7 @@ const Message = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  text-align: center;
 
   span {
     font-weight: 700;
@@ -97,7 +98,7 @@ const StyledInput = styled.input`
   border-radius: 2.9333vw;
   background: #e5fcf4;
   border: none;
-  margin-top: 37.3333vw;
+  margin-top: 18vw;
   color: #797979;
   font-family: "Noto Sans";
   font-size: 3.7333vw;
@@ -174,7 +175,7 @@ function OrderCompletionScreen() {
     <Container>
       <CheckIcon src={checkMark} alt="Check Mark" />
       <Message>
-        <span>주문</span>이 완료되었습니다.
+        <span>주문</span> 완료를 위해 <br/>번호를 입력해주세요!
       </Message>
       <AcountText>{formatPrice(localStorage.getItem("price"))}원,<br/> 100146954603 케이뱅크 (한동공략1조)</AcountText>
       <SubmitText> 입금 후 내역을 부스 운영자들에게 보여주세요.</SubmitText>

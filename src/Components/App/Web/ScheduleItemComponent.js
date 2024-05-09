@@ -112,6 +112,7 @@ const ScheduleItemComponent = ({ schedule, index, handleStatusChange }) => {
          <div>
          <HomeTitle>고객 전화번호</HomeTitle>
           <NumText>{schedule.phoneNumber}</NumText>
+          <NumText>{schedule.time}</NumText>
          </div>
         </FlexDiv>
         <Button

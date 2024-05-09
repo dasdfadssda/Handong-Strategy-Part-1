@@ -179,7 +179,7 @@ function MenuCheck() {
       });
       navigate("/order-submit");
       localStorage.setItem("id", docRef.id);
-      localStorage.setItem("price", price);
+      localStorage.setItem("price", price-sale);
       SetPrice(0);
       SetSale(0);
       setOrders([0, 0]);
@@ -240,10 +240,10 @@ function MenuCheck() {
           </FlexDiv>
         </FlexDiv>
       </WhiteBackBox>
-      <PriceCheck per={80} bottom={8}>
+      <PriceCheck per={80} bottom={7}>
         결제 내역
       </PriceCheck>
-      <FlexDiv justifyContent="space-between" per={80} bottom={5.6}>
+      <FlexDiv justifyContent="space-between" per={80} bottom={5}>
         <PriceCheck weight={500} align="center">
           상품금액
         </PriceCheck>
@@ -260,7 +260,7 @@ function MenuCheck() {
         </PriceCheck>
       </FlexDiv>
       <Hr />
-      <FlexDiv justifyContent="space-between" per={80} bottom={7}>
+      <FlexDiv justifyContent="space-between" per={80} bottom={6}>
         <PriceCheck weight={500} align="center">
           총 결제금액
         </PriceCheck>

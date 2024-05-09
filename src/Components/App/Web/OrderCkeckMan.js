@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { collection, doc, updateDoc, onSnapshot, deleteDoc } from "firebase/firestore";
+import { collection, doc, updateDoc, onSnapshot, deleteDoc, query, orderBy, } from "firebase/firestore";
 import { dbService } from "../../../fbase";
 import ScheduleItemComponent from "./ScheduleItemComponent";
 
@@ -60,12 +60,15 @@ const OrderCkeckMan = () => {
   const [schedules, setSchedule] = useState([]);
 
   useEffect(() => {
+    const q = query(collection(dbService, "order"), orderBy("time"));  // 시간 내림차순 정렬
+ // 'time' 필드에 따라 정렬
     const unsubscribe = onSnapshot(
-      collection(dbService, "order"),
+      q,
       (snapshot) => {
         const newData = snapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
+          time: doc.data().time ? new Date(doc.data().time.toDate()).toLocaleString() :null
         }));
         setSchedule(newData);
       },
@@ -73,20 +76,10 @@ const OrderCkeckMan = () => {
         console.error("Error fetching schedules:", error);
       }
     );
-
+  
     // 구독 취소 함수를 반환하여 컴포넌트 언마운트 시 실시간 업데이트 중지
     return () => unsubscribe();
   }, []);
-
-  const handleDelete = async (id) => {
-    try {
-      await deleteDoc(doc(dbService, "order", id));
-      alert("Order deleted successfully.");
-    } catch (error) {
-      console.error("Error deleting document:", error);
-      alert("Failed to delete order.");
-    }
-  };
 
   const handleStatusChange = async (schedule) => {
     const newStatus = schedule.status === 0 ? 1 : 2;
