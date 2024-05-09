@@ -179,6 +179,7 @@ function MenuCheck() {
       });
       navigate("/order-submit");
       localStorage.setItem("id", docRef.id);
+      localStorage.setItem("price", price);
       SetPrice(0);
       SetSale(0);
       setOrders([0, 0]);
@@ -209,6 +210,10 @@ function MenuCheck() {
     );
   }
 
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(price);
+  }
+
   return (
     <Div>
       <TitleText>주문 내역</TitleText>
@@ -220,7 +225,7 @@ function MenuCheck() {
             <Menuname>삼겹살 + 소세지</Menuname>
             <FlexDiv justifyContent="space-between">
               <MenuNum>수량 : {orders[0]}</MenuNum>
-              <Price>{orders[0] * 5300} 원</Price>
+              <Price>{formatPrice(orders[0] * 5300)} 원</Price>
             </FlexDiv>
           </FlexDiv>
         </FlexDiv>
@@ -230,7 +235,7 @@ function MenuCheck() {
             <Menuname>삼겹살 + 비빔면</Menuname>
             <FlexDiv justifyContent="space-between">
               <MenuNum>수량 : {orders[1]}</MenuNum>
-              <Price>{orders[1] * 5300} 원</Price>
+              <Price>{formatPrice(orders[1] * 5300)} 원</Price>
             </FlexDiv>
           </FlexDiv>
         </FlexDiv>
@@ -243,7 +248,7 @@ function MenuCheck() {
           상품금액
         </PriceCheck>
         <PriceCheck size={18} align="center">
-          {price}원
+          {formatPrice(price)}원
         </PriceCheck>
       </FlexDiv>
       <FlexDiv justifyContent="space-between" per={80}>
@@ -251,7 +256,7 @@ function MenuCheck() {
           할인금액
         </PriceCheck>
         <PriceCheck size={18} align="center">
-          {sale}원
+          {formatPrice(sale)}원
         </PriceCheck>
       </FlexDiv>
       <Hr />
@@ -260,7 +265,7 @@ function MenuCheck() {
           총 결제금액
         </PriceCheck>
         <PriceCheck weight={700} align="center" color="#F04923">
-          {price - sale}원
+          {formatPrice(price - sale)}원
         </PriceCheck>
       </FlexDiv>
       <Button onClick={handleOnSubmit}>주문하기</Button>

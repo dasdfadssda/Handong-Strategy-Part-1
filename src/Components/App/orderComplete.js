@@ -139,7 +139,7 @@ function OrderCompletionScreen() {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText("28350104203645 국민");
+      await navigator.clipboard.writeText("100146954603 케이뱅크");
       setIsCopied(true); // 상태를 "복사완료"로 변경
     } catch (err) {
       console.error("Failed to copy: ", err);
@@ -166,13 +166,17 @@ function OrderCompletionScreen() {
     setPhoneNumber(event.target.value); // 입력 필드가 변경될 때마다 phoneNumber 상태 업데이트
   };
 
+  function formatPrice(price) {
+    return new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(price);
+  }
+
   return (
     <Container>
       <CheckIcon src={checkMark} alt="Check Mark" />
       <Message>
         <span>주문</span>이 완료되었습니다.
       </Message>
-      <AcountText>28350104203645 국민 (한동공략1조)</AcountText>
+      <AcountText>{formatPrice(localStorage.getItem("price"))}원,<br/> 100146954603 케이뱅크 (한동공략1조)</AcountText>
       <SubmitText> 입금 후 내역을 부스 운영자들에게 보여주세요.</SubmitText>
       <Button onClick={handleCopy}>
         <Icon
