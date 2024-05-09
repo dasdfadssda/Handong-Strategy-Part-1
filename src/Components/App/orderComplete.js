@@ -195,14 +195,14 @@ function OrderCompletionScreen() {
         onChange={handleChange}
       />
       <ExplainText>
-        대기시간이 길거나 예약이 필요한 경우에 작성하여 주세요.
+       번호를 적고 앞에 스태프에게 보여주세요!
         <br />
         음식이 완료되면, 입력하신 번호로 문자를 보내드립니다!
         <br />
         <br />
         이용해주셔서 감사합니다.
       </ExplainText>
-      <SubmitButton onClick={handleOnUpdate}>제출</SubmitButton>
+      <SubmitButton onClick={handleOnUpdate}>주문 완료하기</SubmitButton>
     </Container>
   );
 }
