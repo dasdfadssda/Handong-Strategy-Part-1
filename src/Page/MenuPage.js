@@ -163,7 +163,7 @@ function MenuPage() {
         <Menu title="비쌈(별로 안비싸요)" price="5,300" imageSrc={samBee} index={1}/>
       </SwipeableViews>
       <DotsContainer>
-        {[0, 1].map((idx) => (
+        {[0].map((idx) => (
           <Dot
             key={idx}
             isActive={index === idx}
